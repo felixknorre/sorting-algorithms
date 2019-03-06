@@ -5,3 +5,4 @@ few sorting algorithms for a sequence of numbers
 * insertion sort
 * bubble sort
 * merge sort
+* quick sort
