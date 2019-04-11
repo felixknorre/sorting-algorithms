@@ -62,6 +62,36 @@ public class Sequence {
 	//quick sort
 	public void quickSort() {
 		//TODO implement
+		Sequence sequence = this;
+		quickSort(sequence, 0, sequence.length() - 1);
+		
+	}
+	public static void quickSort(Sequence sequence, int li, int ri) {
+		if (li >= ri) {
+			return;
+		}
+		// li = left item, ri = right item
+		int p = pivot(li, ri); //select pivot element
+		sequence.swap(p, ri); // swap pivot with the last element
+		int lpointer = li; //left pointer
+		int rpointer = ri - 1; //right pointer
+				
+		do {
+			while(lpointer <= rpointer && sequence.getItem(lpointer) < sequence.getItem(ri)) {
+				++lpointer;
+			}
+			while(lpointer < rpointer && sequence.getItem(rpointer) >= sequence.getItem(ri)) {
+				--rpointer;
+			}
+			if (lpointer < rpointer) {
+				sequence.swap(lpointer++, rpointer);
+			}
+		} while(lpointer <= --rpointer);
+		p = lpointer;
+		sequence.swap(p, ri);
+				
+		quickSort(sequence, li, p - 1);
+		quickSort(sequence, p + 1, ri);
 	}
 	//help-methods
 	public void swap(int a, int b) {
@@ -79,6 +109,9 @@ public class Sequence {
 			}
 		}
 		return min;
+	}
+	public static int pivot(int li, int ri) {
+		return (li + ri + 1) / 2;
 	}
 
 

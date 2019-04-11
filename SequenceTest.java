@@ -1,4 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class SequenceTest {
@@ -106,7 +108,7 @@ class SequenceTest {
 		assertArrayEquals(expected, s.getArray(),"The method should sort the sequenze");
 		//System.out.println(s.toString());
 	}
-	@Test
+	@Disabled
 	void testMergeSort() {
 		//unsortet int array
 		int[] p = {15,3,12,67,98,34,20,1};
