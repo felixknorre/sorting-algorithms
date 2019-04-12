@@ -1,4 +1,3 @@
-
 public class Sequence {
 	
 	private int[] seq;
@@ -26,7 +25,6 @@ public class Sequence {
 		}
 		return str;
 	}
-	//sorting algo
 	//selection sort
 	public void selectionSort() {
 		for(int i = 0; i < (seq.length - 1); i++) {
@@ -55,15 +53,9 @@ public class Sequence {
 			}
 		}
 	}
-	//merge sort
-	public void mergeSort() {
-		//TODO implement
-	}
 	//quick sort
 	public void quickSort() {
-		//TODO implement
-		Sequence sequence = this;
-		quickSort(sequence, 0, sequence.length() - 1);
+		quickSort(this, 0, this.length() - 1);
 		
 	}
 	public static void quickSort(Sequence sequence, int li, int ri) {
@@ -77,19 +69,21 @@ public class Sequence {
 		int rpointer = ri - 1; //right pointer
 				
 		do {
+			//search a element bigger than the pivot
 			while(lpointer <= rpointer && sequence.getItem(lpointer) < sequence.getItem(ri)) {
 				++lpointer;
 			}
+			//seach a element smaller than the pivot
 			while(lpointer < rpointer && sequence.getItem(rpointer) >= sequence.getItem(ri)) {
 				--rpointer;
-			}
+			} //swap the smaller with the bigger element
 			if (lpointer < rpointer) {
 				sequence.swap(lpointer++, rpointer);
 			}
 		} while(lpointer <= --rpointer);
 		p = lpointer;
-		sequence.swap(p, ri);
-				
+		sequence.swap(p, ri); //swap pivot to the final index
+		//sort the part before and after the pivot		
 		quickSort(sequence, li, p - 1);
 		quickSort(sequence, p + 1, ri);
 	}
